@@ -1,62 +1,72 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "function_multiplicar.c"
-#include "function_divisao.c"
+#include "function_dividir.c"
 
-int main() 
+int main(int argc, char *argv[]) 
 {
     int opcao, numero1, numero2, resultado;
 
-    do 
+    if (argc > 3)
     {
-        printf("Feito Por Pietra Oliveia Narciso Santos\n")
-        printf("0. Sair\n");
-        printf("1. Soma\n");
-        printf("2. Subtração\n");
-        printf("3. Divisão\n");
-        printf("4. Multiplicação\n");
-        printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
-
-        if (opcao >= 1 && opcao <= 4)
+        opcao = atoi(argv{1});
+        numero1 = atoi(argv{2});
+        numero2 = atoi(argv{3});
+    }
+    else
+    {
+        do
         {
-            printf("Digite o primeiro número: ");
-            scanf("%d", &numero1);
-            printf("Digite o segundo número: ");
-            scanf("%d", &numero2);
+            printf("Feito Por Pietra Oliveia Narciso Santos\n")
+            printf("0. Sair\n");
+            printf("1. Soma\n");
+            printf("2. Subtração\n");
+            printf("3. Divisão\n");
+            printf("4. Multiplicação\n");
+            printf("Escolha uma opção: ");
+            scanf("%d", &opcao);
 
-            if (opcao == 1)
+            if (opcao >= 1 && opcao <= 4)
             {
-                resultado = numero1 + numero2;
-                printf("\nA soma de %d com %d é igual a %d\n", numero1, numero2, resultado);
-            } 
-            else if (opcao == 2)
-            {
-                resultado = numero1 - numero2;
-                printf("\nA subtração de %d com %d é igual a %d\n", numero1, numero2, resultado);
-            } 
-            else if (opcao == 3)
-            {
-                if (numero2 != 0) {
-                    printf("\nResultado da divisão: %d\n", dividir(numero1, numero2));
-                }
-                else
+                printf("Digite o primeiro número: ");
+                scanf("%d", &numero1);
+                printf("Digite o segundo número: ");
+                scanf("%d", &numero2);
+
+                if (opcao == 1)
                 {
-                    printf("\nErro: Divisão por zero!\n");
-                }
-            } 
-            else if (opcao == 4)
-            {
-                printf("\nResultado da multiplicação: %d\n", multiplicar(numero1, numero2));
+                    resultado = numero1 + numero2;
+                    printf("\nA soma de %d com %d é igual a %d\n", numero1, numero2, resultado);
+                } 
+                else if (opcao == 2)
+                {
+                    resultado = numero1 - numero2;
+                    printf("\nA subtração de %d com %d é igual a %d\n", numero1, numero2, resultado);
+                } 
+                else if (opcao == 3)
+                {
+                    if (numero2 != 0)
+                    {
+                        printf("\nResultado da divisão: %d\n", dividir(numero1, numero2));
+                    }
+                    else
+                    {
+                        printf("\nErro: Divisão por zero!\n");
+                    }
+                } 
+                else if (opcao == 4)
+                {
+                    printf("\nResultado da multiplicação: %d\n", multiplicar(numero1, numero2));
+                } 
             }
-        } 
-        else if (opcao != 0)
-        {
-            printf("\nOpção inválida! Tente novamente.\n");
-        }
+            else if (opcao != 0)
+            {
+                printf("\nOpção inválida! Tente novamente.\n");
+            }
 
-    } while (opcao != 0);
-
+        } while (opcao != 0);
+    
+    }
     printf("\nPrograma encerrado.\n");
     return 0;
 }
